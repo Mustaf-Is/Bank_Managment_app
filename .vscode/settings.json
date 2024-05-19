@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "C:/Users/Lenovo-NB/OneDrive/Desktop/Bank_Managment_App/mysql-connector-java-8.0.27 (1).jar"
+    ],
+    "java.dependency.packagePresentation": "hierarchical"
+}
