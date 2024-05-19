@@ -1,18 +1,51 @@
-## Getting Started
+# Bank Management System App
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Overview
+This project is a Bank Management System that allows users to create bank accounts, perform transactions, and manage funds. It supports storing data in a MySQL database with three tables: `Bank`, `Account`, and `Transaction`
 
-## Folder Structure
+## Features
+- Create bank accounts with unique IDs.
+- Deposit and withdraw funds from accounts.
+- Perform transactions between accounts with fee management.
+- Track cumulative transaction fees and transfer amounts.
+- Display summary of bank's transaction fees and transfer amounts.
 
-The workspace contains two folders by default, where:
+## Prerequisites
+- Java Development Kit (JDK) 8 or higher
+- MySQL Server
+- JDBC driver for MySQL
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Database Setup
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+1. **Create the database and tables**
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+   - Run the provided `bankapplication.sql` script to create the database and tables.
+     ```bash
+     mysql -u yourusername -p < schema.sql
+     ```
 
-## Dependency Management
+2. **Update the `DbConn.java` class with your MySQL database connection details**
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+   - Edit the `DbConn.java` file to include your MySQL connection details:
+     ```java
+     public class DbConn {
+         private static Connection con;
+         private static  String URL = "jdbc:mysql://localhost:3306/bankapplication";
+         private static  String USER = "yourusername";
+         private static  String PASSWORD = "yourpassword";
+         private static  String DRIVER = "com.mysql.cj.jdbc.Driver"
+
+         public static Connection getConnection() throws SQLException {
+             try{
+                 Class.forName(DRIVER);
+                 con= DriverManager.getConnection(URL,USER,PASSWORD);
+             }
+             catch(Exception e){
+                 System.out.println(e.getMessage());
+             }
+             return con;
+         }
+     }
+     ```
+
+4. **Compile and run the application**
